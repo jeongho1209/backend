@@ -1,4 +1,4 @@
-package com.example.thirdassignment.todo.entity
+package com.example.thirdassignment.todo.domain
 
 import org.springframework.data.repository.CrudRepository
 

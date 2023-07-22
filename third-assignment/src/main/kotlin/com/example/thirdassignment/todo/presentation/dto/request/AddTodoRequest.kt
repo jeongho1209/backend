@@ -1,4 +1,4 @@
-package com.example.thirdassignment.todo.dto.request
+package com.example.thirdassignment.todo.presentation.dto.request
 
 data class AddTodoRequest(
     val title: String,

@@ -1,8 +1,8 @@
-package com.example.thirdassignment.todo
+package com.example.thirdassignment.todo.presentation
 
-import com.example.thirdassignment.todo.dto.request.AddTodoRequest
-import com.example.thirdassignment.todo.dto.request.UpdateTodoRequest
-import com.example.thirdassignment.todo.dto.response.QueryTodoList
+import com.example.thirdassignment.todo.presentation.dto.request.AddTodoRequest
+import com.example.thirdassignment.todo.presentation.dto.request.UpdateTodoRequest
+import com.example.thirdassignment.todo.presentation.dto.response.QueryTodoList
 import com.example.thirdassignment.todo.service.TodoService
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping

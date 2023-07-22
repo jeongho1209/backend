@@ -1,4 +1,4 @@
-package com.example.thirdassignment.todo.entity
+package com.example.thirdassignment.todo.domain
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue

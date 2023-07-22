@@ -1,4 +1,4 @@
-package com.example.thirdassignment.todo.dto.response
+package com.example.thirdassignment.todo.presentation.dto.response
 
 data class QueryTodoList(
     val todoList: List<TodoResponse>
