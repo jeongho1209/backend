@@ -1,11 +1,11 @@
 package com.example.thirdassignment.todo.service
 
-import com.example.thirdassignment.todo.dto.request.AddTodoRequest
-import com.example.thirdassignment.todo.dto.request.UpdateTodoRequest
-import com.example.thirdassignment.todo.dto.response.QueryTodoList
-import com.example.thirdassignment.todo.dto.response.QueryTodoList.TodoResponse
-import com.example.thirdassignment.todo.entity.TodoEntity
-import com.example.thirdassignment.todo.entity.TodoRepository
+import com.example.thirdassignment.todo.presentation.dto.request.AddTodoRequest
+import com.example.thirdassignment.todo.presentation.dto.request.UpdateTodoRequest
+import com.example.thirdassignment.todo.presentation.dto.response.QueryTodoList
+import com.example.thirdassignment.todo.presentation.dto.response.QueryTodoList.TodoResponse
+import com.example.thirdassignment.todo.domain.TodoEntity
+import com.example.thirdassignment.todo.domain.TodoRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
