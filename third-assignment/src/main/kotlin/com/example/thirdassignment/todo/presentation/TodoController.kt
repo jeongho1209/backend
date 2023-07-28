@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RequestMapping("/todo")
@@ -19,9 +20,9 @@ import org.springframework.web.bind.annotation.RestController
 class TodoController(
     private val todoService: TodoService,
 ) {
-    @GetMapping("/list")
-    fun getAllTodoList(): QueryTodoList {
-        return todoService.getAllTodoList()
+    @GetMapping("/list/{account-id}")
+    fun getAllTodoList(@PathVariable("account-id") accountId: String): QueryTodoList {
+        return todoService.getAllTodoListByAccountId(accountId)
     }
 
     @PostMapping("/add")
@@ -39,8 +40,11 @@ class TodoController(
         todoService.updateTodo(request)
     }
 
-    @DeleteMapping("/{todo-id}")
-    fun deleteTodo(@PathVariable("todo-id") todoId: Int) {
-        todoService.deleteTodo(todoId)
+    @DeleteMapping
+    fun deleteTodo(
+        @RequestParam("todo-id") todoId: Int,
+        @RequestParam("account-id") accountId: String,
+    ) {
+        todoService.deleteTodo(todoId, accountId)
     }
 }
