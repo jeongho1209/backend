@@ -6,6 +6,8 @@ enum class GlobalErrorCode(
 ) {
     BAD_REQUEST(status = 400, message = "Bad Request"),
 
+    UN_AUTHORIZED(status = 401, message = "Un Authorized"),
+
     TODO_NOT_FOUND(status = 404, message = "Todo Not Found"),
     USER_NOT_FOUND(status = 404, message = "User Not Found"),
 

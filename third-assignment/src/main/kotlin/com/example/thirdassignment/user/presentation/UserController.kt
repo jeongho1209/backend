@@ -1,6 +1,8 @@
 package com.example.thirdassignment.user.presentation
 
+import com.example.thirdassignment.user.presentation.dto.request.UserSignInRequest
 import com.example.thirdassignment.user.presentation.dto.request.UserSignUpRequest
+import com.example.thirdassignment.user.presentation.dto.response.UserSignInResponse
 import com.example.thirdassignment.user.service.UserService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.PostMapping
@@ -19,5 +21,10 @@ class UserController(
     @PostMapping("/signup")
     fun signUp(@RequestBody request: UserSignUpRequest) {
         userService.signUp(request)
+    }
+
+    @PostMapping("/login")
+    fun signIn(@RequestBody request: UserSignInRequest): UserSignInResponse {
+        return userService.signIn(request)
     }
 }

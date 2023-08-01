@@ -1,6 +1,5 @@
 package com.example.thirdassignment.todo.service
 
-import com.example.thirdassignment.common.base64.decodingBase64
 import com.example.thirdassignment.todo.domain.TodoEntity
 import com.example.thirdassignment.todo.domain.TodoRepository
 import com.example.thirdassignment.todo.exception.TodoNotFoundException
@@ -10,10 +9,13 @@ import com.example.thirdassignment.todo.presentation.dto.response.QueryTodoList
 import com.example.thirdassignment.todo.presentation.dto.response.QueryTodoList.TodoResponse
 import com.example.thirdassignment.user.domain.UserEntity
 import com.example.thirdassignment.user.domain.UserRepository
+import com.example.thirdassignment.user.exception.UnAuthorizedException
 import com.example.thirdassignment.user.exception.UserNotFoundException
+import com.example.thirdassignment.user.service.userHashMap
 import jakarta.servlet.http.HttpServletRequest
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import java.util.UUID
 
 @Service
 class TodoService(
@@ -22,11 +24,12 @@ class TodoService(
 ) {
 
     fun addTodo(request: AddTodoRequest, httpServletRequest: HttpServletRequest) {
-        val decodingStrings = httpServletRequest.getHeader("Authorization").decodingBase64()
-        val user = userRepository.findByAccountIdAndPassword(
-            accountId = decodingStrings[0],
-            password = decodingStrings[1],
-        ) ?: throw TodoNotFoundException
+        val userUUID = httpServletRequest.getHeader("Authorization")
+        val userAccountId = userHashMap[UUID.fromString(userUUID)]
+            ?: throw UnAuthorizedException
+
+        val user = userRepository.findByAccountId(userAccountId)
+            ?: throw UserNotFoundException
 
         todoRepository.save(
             TodoEntity(
