@@ -1,5 +1,6 @@
 package com.example.thirdassignment.todo.service
 
+import com.example.thirdassignment.common.base64.decodingBase64
 import com.example.thirdassignment.todo.domain.TodoEntity
 import com.example.thirdassignment.todo.domain.TodoRepository
 import com.example.thirdassignment.todo.exception.TodoNotFoundException
@@ -10,6 +11,7 @@ import com.example.thirdassignment.todo.presentation.dto.response.QueryTodoList.
 import com.example.thirdassignment.user.domain.UserEntity
 import com.example.thirdassignment.user.domain.UserRepository
 import com.example.thirdassignment.user.exception.UserNotFoundException
+import jakarta.servlet.http.HttpServletRequest
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
@@ -19,10 +21,11 @@ class TodoService(
     private val userRepository: UserRepository,
 ) {
 
-    fun addTodo(request: AddTodoRequest) {
+    fun addTodo(request: AddTodoRequest, httpServletRequest: HttpServletRequest) {
+        val decodingStrings = httpServletRequest.getHeader("Authorization").decodingBase64()
         val user = userRepository.findByAccountIdAndPassword(
-            accountId = request.accountId,
-            password = request.password,
+            accountId = decodingStrings[0],
+            password = decodingStrings[1],
         ) ?: throw TodoNotFoundException
 
         todoRepository.save(

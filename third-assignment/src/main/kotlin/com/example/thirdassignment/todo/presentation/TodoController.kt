@@ -4,6 +4,7 @@ import com.example.thirdassignment.todo.presentation.dto.request.AddTodoRequest
 import com.example.thirdassignment.todo.presentation.dto.request.UpdateTodoRequest
 import com.example.thirdassignment.todo.presentation.dto.response.QueryTodoList
 import com.example.thirdassignment.todo.service.TodoService
+import jakarta.servlet.http.HttpServletRequest
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PatchMapping
@@ -26,8 +27,8 @@ class TodoController(
     }
 
     @PostMapping("/add")
-    fun addTodo(@RequestBody request: AddTodoRequest) {
-        todoService.addTodo(request)
+    fun addTodo(@RequestBody request: AddTodoRequest, httpServletRequest: HttpServletRequest) {
+        todoService.addTodo(request, httpServletRequest)
     }
 
     @PatchMapping("/{todo-id}")
