@@ -1,5 +1,6 @@
 package com.example.thirdassignment.user.presentation
 
+import com.example.thirdassignment.refresh_token.TokenResponse
 import com.example.thirdassignment.user.presentation.dto.request.UserSignInRequest
 import com.example.thirdassignment.user.presentation.dto.request.UserSignUpRequest
 import com.example.thirdassignment.user.presentation.dto.response.UserSignInResponse
@@ -24,7 +25,7 @@ class UserController(
     }
 
     @PostMapping("/login")
-    fun signIn(@RequestBody request: UserSignInRequest): UserSignInResponse {
+    fun signIn(@RequestBody request: UserSignInRequest): TokenResponse {
         return userService.signIn(request)
     }
 }
