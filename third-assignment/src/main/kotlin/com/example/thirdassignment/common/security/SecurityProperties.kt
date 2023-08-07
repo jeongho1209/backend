@@ -7,5 +7,4 @@ class SecurityProperties(
     val accessExp: Long,
     val refreshExp: Long,
     val secretKey: String,
-) {
-}
+)

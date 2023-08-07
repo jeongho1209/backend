@@ -1,4 +1,4 @@
-package com.example.thirdassignment.user.presentation.dto.request
+package com.example.thirdassignment.auth.presentation.dto.request
 
 data class UserSignInRequest(
     val accountId: String,

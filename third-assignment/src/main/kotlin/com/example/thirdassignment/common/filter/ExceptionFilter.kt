@@ -3,8 +3,6 @@ package com.example.thirdassignment.common.filter
 import com.example.thirdassignment.common.error.CustomException
 import com.example.thirdassignment.common.error.ErrorResponse
 import com.example.thirdassignment.common.error.GlobalErrorCode
-import com.example.thirdassignment.common.error.of
-import com.example.thirdassignment.common.exception.InternalServerErrorException
 import com.fasterxml.jackson.databind.ObjectMapper
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
@@ -25,10 +23,12 @@ class ExceptionFilter(
         try {
             filterChain.doFilter(request, response)
         } catch (e: CustomException) {
+            e.printStackTrace()
             errorToJson((e.cause as CustomException).globalErrorCode, response)
         } catch (e: Exception) {
             when (e.cause) {
                 is CustomException -> {
+                    e.printStackTrace()
                     errorToJson((e.cause as CustomException).globalErrorCode, response)
                 }
 
@@ -45,7 +45,14 @@ class ExceptionFilter(
             status = globalErrorCode.status
             characterEncoding = StandardCharsets.UTF_8.name()
             contentType = MediaType.APPLICATION_JSON_VALUE
-            writer.write(objectMapper.writeValueAsString(ErrorResponse(globalErrorCode.status, globalErrorCode.message)))
+            writer.write(
+                objectMapper.writeValueAsString(
+                    ErrorResponse(
+                        globalErrorCode.status,
+                        globalErrorCode.message
+                    )
+                )
+            )
         }
     }
 }

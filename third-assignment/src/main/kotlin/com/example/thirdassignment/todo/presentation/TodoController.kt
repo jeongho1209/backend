@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
-@RequestMapping("/todo")
+@RequestMapping("/todos")
 @RestController
 class TodoController(
     private val todoService: TodoService,
@@ -27,8 +27,8 @@ class TodoController(
     }
 
     @PostMapping("/add")
-    fun addTodo(@RequestBody request: AddTodoRequest, httpServletRequest: HttpServletRequest) {
-        todoService.addTodo(request, httpServletRequest)
+    fun addTodo(@RequestBody request: AddTodoRequest) {
+        todoService.addTodo(request)
     }
 
     @PatchMapping("/{todo-id}")

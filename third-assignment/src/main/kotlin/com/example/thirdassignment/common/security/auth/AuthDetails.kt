@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails
 class AuthDetails(
     private val user: UserEntity,
 ) : UserDetails {
-    override fun getAuthorities(): MutableCollection<out GrantedAuthority>? = null
+    override fun getAuthorities(): MutableCollection<out GrantedAuthority> = mutableListOf()
     override fun getPassword(): String? = null
     override fun getUsername(): String = user.accountId
     override fun isAccountNonExpired() = true

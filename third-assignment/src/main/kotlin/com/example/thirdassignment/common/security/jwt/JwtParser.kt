@@ -19,8 +19,8 @@ class JwtParser(
     private val authDetailsService: AuthDetailsService,
 ) {
 
-    private fun getClaims(token: String): Claims {
-        return try {
+    private fun getClaims(token: String): Claims =
+        try {
             Jwts.parser()
                 .setSigningKey(securityProperties.secretKey)
                 .parseClaimsJws(token).body
@@ -31,11 +31,10 @@ class JwtParser(
                 else -> throw InternalServerErrorException
             }
         }
-    }
 
     fun getAuthentication(token: String): Authentication {
         val claims = getClaims(token)
         val authDetails = authDetailsService.loadUserByUsername(claims.subject)
-        return UsernamePasswordAuthenticationToken(authDetails, "")
+        return UsernamePasswordAuthenticationToken(authDetails, "", authDetails.authorities)
     }
 }

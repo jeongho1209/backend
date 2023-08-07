@@ -12,6 +12,7 @@ enum class GlobalErrorCode(
 
     TODO_NOT_FOUND(status = 404, message = "Todo Not Found"),
     USER_NOT_FOUND(status = 404, message = "User Not Found"),
+    REFRESH_TOKEN_NOT_FOUND(status = 404, message = "Refresh Token Not Found"),
 
     INTERNAL_SERVER_ERROR(status = 500, message = "Internal Server Error");
 }
