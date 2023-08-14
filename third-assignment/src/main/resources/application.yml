@@ -8,8 +8,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-  jackson:
-    property-naming-strategy: SNAKE_CASE
 
 jwt:
   access_exp: ${ACCESS_EXP:3600}

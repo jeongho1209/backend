@@ -12,7 +12,6 @@ import com.example.thirdassignment.user.domain.UserEntity
 import com.example.thirdassignment.user.domain.UserRepository
 import com.example.thirdassignment.user.exception.UserNotFoundException
 import org.springframework.data.repository.findByIdOrNull
-import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Service
 
 @Service
@@ -38,8 +37,8 @@ class TodoService(
         todo.todoComplete()
     }
 
-    fun deleteTodo(todoId: Int, accountId: String) {
-        val user = findUserByAccountId(accountId)
+    fun deleteTodo(todoId: Int) {
+        val user = getCurrentUser.getCurrentUser()
 
         val todoEntity = findTodoByTodoId(todoId)
 
@@ -60,8 +59,8 @@ class TodoService(
         )
     }
 
-    fun getAllTodoListByAccountId(accountId: String): QueryTodoList {
-        val user = findUserByAccountId(accountId)
+    fun getAllTodoListByAccountId(): QueryTodoList {
+        val user = getCurrentUser.getCurrentUser()
         val todoList = todoRepository.findAllByUser(user)
 
         val response = todoList.map { todo ->
