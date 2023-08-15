@@ -13,3 +13,7 @@ jwt:
   access_exp: ${ACCESS_EXP:3600}
   refresh_exp: ${REFRESH_EXP:360000}
   secret_key: ${SECRET_KEY}
+
+redis:
+  host: ${REDIS_HOST:localhost}
+  port: ${REDIS_PORT:6379}
