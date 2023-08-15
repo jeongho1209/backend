@@ -17,4 +17,4 @@ jwt:
 redis:
   host: ${REDIS_HOST:localhost}
   port: ${REDIS_PORT:6379}
-  passwrd: ${REDIS_PASSWORD}
+  password: ${REDIS_PASSWORD:pass}
