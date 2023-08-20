@@ -41,6 +41,7 @@ dependencies {
     implementation("javax.xml.bind:jaxb-api:2.4.0-b180830.0359")
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
+    testImplementation("io.mockk:mockk:1.13.7")
 }
 
 tasks.withType<KotlinCompile> {
