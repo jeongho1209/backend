@@ -42,6 +42,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
     testImplementation("io.mockk:mockk:1.13.7")
+    testImplementation("io.kotest:kotest-runner-junit5:5.5.5")
 }
 
 tasks.withType<KotlinCompile> {
