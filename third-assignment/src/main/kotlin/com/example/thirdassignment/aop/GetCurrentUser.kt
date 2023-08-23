@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component
 class GetCurrentUser(
     private val userRepository: UserRepository,
 ) {
-    fun getCurrentUser(): UserEntity {
+    fun getCurrentUser(): UserEntity? {
         val accountId = SecurityContextHolder.getContext().authentication?.name
         return userRepository.findByAccountId(accountId)
             ?: throw UserNotFoundException
