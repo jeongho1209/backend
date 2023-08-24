@@ -13,9 +13,7 @@ class UserService(
 ) {
 
     fun signUp(request: UserSignUpRequest) {
-        if (userRepository.existsByAccountId(request.accountId)) {
-            throw IllegalArgumentException("아이디가 존재합니다.")
-        }
+        checkIsExistsUserAccountId(request.accountId)
 
         userRepository.save(
             UserEntity(
@@ -23,5 +21,11 @@ class UserService(
                 password = passwordEncoder.encode(request.password),
             )
         )
+    }
+
+    internal fun checkIsExistsUserAccountId(accountId: String) {
+        if (userRepository.existsByAccountId(accountId)) {
+            throw IllegalArgumentException("아이디가 존재합니다.")
+        }
     }
 }
