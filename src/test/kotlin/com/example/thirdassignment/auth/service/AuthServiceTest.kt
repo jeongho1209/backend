@@ -10,7 +10,6 @@ import com.example.thirdassignment.user.exception.UnAuthorizedException
 import com.example.thirdassignment.user.stub.createUserStub
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
-import io.kotest.matchers.shouldBe
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers

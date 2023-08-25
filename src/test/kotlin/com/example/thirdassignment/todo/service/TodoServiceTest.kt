@@ -3,7 +3,6 @@ package com.example.thirdassignment.todo.service
 import com.example.thirdassignment.aop.GetCurrentUser
 import com.example.thirdassignment.todo.domain.TodoRepository
 import com.example.thirdassignment.todo.stub.createTodoRequestStub
-import com.example.thirdassignment.user.domain.UserEntity
 import com.example.thirdassignment.user.domain.UserRepository
 import com.example.thirdassignment.user.exception.UserNotFoundException
 import com.example.thirdassignment.user.stub.createUserStub

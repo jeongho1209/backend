@@ -8,7 +8,6 @@ import com.example.thirdassignment.common.security.jwt.JwtProvider
 import com.example.thirdassignment.refresh_token.RefreshTokenRepository
 import com.example.thirdassignment.user.domain.UserRepository
 import com.example.thirdassignment.user.exception.UnAuthorizedException
-import com.example.thirdassignment.user.exception.UserNotFoundException
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime

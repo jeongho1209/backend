@@ -6,14 +6,11 @@ import com.example.thirdassignment.user.stub.createUserStub
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
 import io.mockk.coEvery
-import io.mockk.junit5.MockKExtension
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.security.crypto.password.PasswordEncoder
 
-@ExtendWith(MockKExtension::class)
 internal class UserServiceTest : DescribeSpec({
 
     val userRepository: UserRepository = mockk(relaxed = true)
