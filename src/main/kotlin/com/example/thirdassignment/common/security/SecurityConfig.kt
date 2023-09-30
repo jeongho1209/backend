@@ -15,8 +15,8 @@ import org.springframework.security.web.SecurityFilterChain
 @Configuration
 @EnableWebSecurity
 class SecurityConfig(
-    private val jwtParser: JwtParser,
     private val objectMapper: ObjectMapper,
+    private val jwtParser: JwtParser,
 ) {
 
     @Bean
@@ -30,8 +30,7 @@ class SecurityConfig(
                 it.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             }
             .authorizeHttpRequests {
-                it.requestMatchers("/todos").authenticated()
-                    .anyRequest().permitAll()
+                it.requestMatchers("/**").permitAll()
             }
         http
             .apply(FilterConfig(jwtParser, objectMapper))
