@@ -23,7 +23,7 @@ class TodoEntity(
 
     content: String,
 
-    isCompleted: Boolean,
+    isCompleted: Boolean = false,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
