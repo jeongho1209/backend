@@ -22,15 +22,12 @@ class TodoService(
 ) {
 
     fun addTodo(request: AddTodoRequest) {
-        val user = getCurrentUser.getCurrentUser()
-            ?: throw UserNotFoundException
-
         todoRepository.save(
             TodoEntity(
                 title = request.title,
                 content = request.content,
                 isCompleted = false,
-                user = user,
+                user = getCurrentUser.getCurrentUser(),
             )
         )
     }
@@ -42,8 +39,6 @@ class TodoService(
 
     fun deleteTodo(todoId: Int) {
         val user = getCurrentUser.getCurrentUser()
-            ?: throw UserNotFoundException
-
         val todoEntity = findTodoByTodoId(todoId)
 
         checkIsEqualTodoWriter(user.id, todoEntity.id)
@@ -64,10 +59,7 @@ class TodoService(
     }
 
     fun getAllTodoListByAccountId(): QueryTodoList {
-        val user = getCurrentUser.getCurrentUser()
-            ?: throw UserNotFoundException
-        val todoList = todoRepository.findAllByUser(user)
-
+        val todoList = todoRepository.findAllByUser(getCurrentUser.getCurrentUser())
         val response = todoList.map { todo ->
             TodoResponse(
                 todoId = todo.id,
