@@ -20,4 +20,4 @@ jobs:
           distribution: 'zulu'
 
       - name: Build with Gradle
-        run: ./gradlew build -x test
+        run: ./gradlew build -x test # todo -> test 없애기
