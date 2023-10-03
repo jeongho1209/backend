@@ -58,7 +58,7 @@ class TodoService(
         )
     }
 
-    fun getAllTodoListByAccountId(): QueryTodoList {
+    fun getAllTodoList(): QueryTodoList {
         val todoList = todoRepository.findAllByUser(getCurrentUser.getCurrentUser())
         val response = todoList.map { todo ->
             TodoResponse(

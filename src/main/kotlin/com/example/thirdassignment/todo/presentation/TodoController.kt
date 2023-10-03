@@ -23,7 +23,7 @@ class TodoController(
 ) {
     @GetMapping("/me")
     fun getAllTodoList(): QueryTodoList {
-        return todoService.getAllTodoListByAccountId()
+        return todoService.getAllTodoList()
     }
 
     @ResponseStatus(HttpStatus.CREATED)
