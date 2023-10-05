@@ -24,7 +24,7 @@ class TodoServiceTest : DescribeSpec({
 
     describe("유저가 할 일을 추가할 때") {
         context("유저의 인증이 실패하면") {
-            coEvery { getCurrentUser.getCurrentUser() } returns null
+            coEvery { getCurrentUser.getCurrentUser() }
             coEvery {
                 withContext(Dispatchers.IO) {
                     userRepository.save(createUserStub())
