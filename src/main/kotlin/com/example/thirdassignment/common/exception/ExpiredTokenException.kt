@@ -5,4 +5,6 @@ import com.example.thirdassignment.common.error.GlobalErrorCode
 
 object ExpiredTokenException : CustomException(
     GlobalErrorCode.EXPIRED_TOKEN,
-)
+) {
+    private fun readResolve(): Any = ExpiredTokenException
+}
